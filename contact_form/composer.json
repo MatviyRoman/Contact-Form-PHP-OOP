@@ -1,0 +1,15 @@
+{
+    "name": "romas/contact_form",
+    "autoload": {
+        "psr-4": {
+            "Romas\\ContactForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Roman Matviy",
+            "email": "roman@matviy.pp.ua"
+        }
+    ],
+    "require": {}
+}
