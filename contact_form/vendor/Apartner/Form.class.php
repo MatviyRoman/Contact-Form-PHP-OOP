@@ -73,7 +73,8 @@ class Form
             $name = Tools::stripCleanToHtml($_COOKIE["name_$id"]);
         $name     = $name ? $name : 'name'; ?>
                 <div class="contactFormHalf">
-                    <input type="text" name="name_<?= $id ?>"
+                    <input type="text" placeholder="name"
+                           name="name_<?= $id ?>"
                            value="<?= $name ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
                            onblur="if (this.value=='') this.value=this.defaultValue" required="">
@@ -84,7 +85,8 @@ class Form
             $phone = Tools::stripCleanToHtml($_COOKIE["phone_$id"]);
         $phone     = $phone ? $phone : 'phone'; ?>
                 <div class="contactFormHalf">
-                    <input type="text" name="phone_<?= $id ?>"
+                    <input type="text" placeholder="phone"
+                           name="phone_<?= $id ?>"
                            value="<?= $phone ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
                            onblur="if (this.value=='') this.value=this.defaultValue" required="">
@@ -95,7 +97,8 @@ class Form
             $email = Tools::stripCleanToHtml($_COOKIE["email_$id"]);
         $email     = $email ? $email : 'email'; ?>
                 <div class="contactFormHalf">
-                    <input type="text" name="email_<?= $id ?>"
+                    <input type="text" placeholder="email"
+                           name="email_<?= $id ?>"
                            value="<?= $email ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
                            onblur="if (this.value=='') this.value=this.defaultValue" required="">
@@ -108,7 +111,7 @@ class Form
             $street_number = Tools::stripCleanToHtml($_COOKIE["street_number_$id"]);
         $street_number     = $street_number ? $street_number : 'street number'; ?>
                 <div class="contactFormHalf">
-                    <input type="text"
+                    <input type="text" placeholder="street number"
                            name="street_number_<?= $id ?>"
                            value="<?= $street_number ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
@@ -120,7 +123,8 @@ class Form
             $street_name = Tools::stripCleanToHtml($_COOKIE["street_name_$id"]);
         $street_name     = $street_name ? $street_name : 'street name'; ?>
                 <div class="contactFormHalf">
-                    <input type="text" name="street_name_<?= $id ?>"
+                    <input type="text" placeholder="street name"
+                           name="street_name_<?= $id ?>"
                            value="<?= $street_name ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
                            onblur="if (this.value=='') this.value=this.defaultValue" required="">
@@ -135,7 +139,8 @@ class Form
             $city = Tools::stripCleanToHtml($_COOKIE["city_$id"]);
         $city     = $city ? $city : 'city'; ?>
                 <div class="contactFormHalf">
-                    <input type="text" name="city_<?= $id ?>"
+                    <input type="text" placeholder="city"
+                           name="city_<?= $id ?>"
                            value="<?= $city ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
                            onblur="if (this.value=='') this.value=this.defaultValue" required="">
@@ -146,7 +151,8 @@ class Form
             $zip = Tools::stripCleanToHtml($_COOKIE["zip_$id"]);
         $zip     = $zip ? $zip : 'zip'; ?>
                 <div class="contactFormHalf">
-                    <input type="text" name="zip_<?= $id ?>"
+                    <input type="text" placeholder="zip"
+                           name="zip_<?= $id ?>"
                            value="<?= $zip ?>"
                            onclick="if (this.defaultValue==this.value) this.value=''"
                            onblur="if (this.value=='') this.value=this.defaultValue" required="">
