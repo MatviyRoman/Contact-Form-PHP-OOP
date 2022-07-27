@@ -143,6 +143,11 @@ a {
     max-height: 0;
 }
 
+.contactFormFirst.antispam {
+    height: 0;
+    overflow: hidden;
+}
+
 
 .contact {
     padding: 60px 0;

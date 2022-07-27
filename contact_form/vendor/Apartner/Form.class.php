@@ -50,7 +50,7 @@ class Form
     <div class="contPar"><?= Errors::check($id); ?>
     </div><!-- end contPar -->
     <form class="contactForm" id="<?= $id ?>"
-          action="./?<?= $id ?>" method="post">
+          action="?<?= $id ?>" method="post">
 
         <?= $antiCSRF->insertHiddenToken($id); ?>
         <input type="hidden" name="form" value="<?= $id ?>">
@@ -176,8 +176,88 @@ class Form
 </div><!-- end contForm -->
 <?php
         if (self::$count == 1) {
-            echo '<link rel="stylesheet" href="/' . self::$folder . '/public/style.css">';
+            echo '<link rel="stylesheet" href="/' . self::$folder . '/assets/style.css">';
             // echo '<script type="text/javascript" src="/' . self::$folder . '/public/contact-form.js"></script>';
+
+            echo '<style>.contactFormHalf {
+                width: 32%;
+                overflow: hidden;
+                padding: 20px 0;
+              }
+              
+              .contactFormFirst input[type=text] {
+                margin: 0 auto;
+                border: 1px solid #fff;
+                border-radius: 3px;
+                color: #fff;
+                padding: 1px;
+                display: block;
+                width: 100%;
+                height: 5px;
+                font-size: 14px;
+                outline: none;
+              }
+              
+              .contactFormHalf input[type=text],
+              .contactFormHalf input[type=number] {
+                margin: 10px auto;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                color: #777;
+                padding: 8px 8px 8px 20px;
+                display: block;
+                width: 100%;
+                height: 90px;
+                font-size: 24px;
+                outline: none;
+              }
+              
+              .contactFormFull {
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+              }
+              .contactFormFull .contactFormHalf {
+                width: 100%;
+              }
+              .contactFormFull textarea {
+                margin: 10px auto;
+                border: none;
+                padding: 8px;
+                display: block;
+                width: 100%;
+                height: 160px;
+                font-size: 24px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                outline: none;
+                color: #777;
+                resize: none;
+              }
+              .contactFormFull input[type=submit] {
+                border: 1px solid #0099dd;
+                background: #0099dd;
+                color: #fff;
+                display: block;
+                cursor: pointer;
+                font-size: 21px;
+                padding: 10px 40px;
+                text-decoration: none;
+                min-width: 200px;
+                height: 50px;
+                margin: 10px auto;
+                outline: none;
+                text-transform: uppercase;
+              }
+              .contactFormFull input[type=submit]:hover {
+                background: #2a2f30;
+                border: 1px solid #2a2f30;
+                color: #fff;
+              }
+              
+              .formHalfWrapper.two-columns .contactFormHalf {
+                width: 49%;
+              }</style>';
         }
 
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {

@@ -88,14 +88,6 @@ class Validation
             }
 
             echo '<script>Cookies.remove("token_' . $form . '")</script>';
-            echo '<script>Cookies.remove("name_' . $form . '")</script>';
-            echo '<script>Cookies.remove("phone_' . $form . '")</script>';
-            echo '<script>Cookies.remove("email_' . $form . '")</script>';
-            echo '<script>Cookies.remove("city_' . $form . '")</script>';
-            echo '<script>Cookies.remove("zip_' . $form . '")</script>';
-            echo '<script>Cookies.remove("street_name_' . $form . '")</script>';
-            echo '<script>Cookies.remove("street_number_' . $form . '")</script>';
-            echo '<script>Cookies.remove("note_' . $form . '")</script>';
 
             if ($fname != '' && $fname != 'fname' || isset($field_url) && $field_url != 'url') {
                 $url .= '?';
@@ -127,7 +119,7 @@ class Validation
                         $get_code   = mb_substr($phoneS, 1, 3);
                     }
 
-                    if ((($number_digits == 11)) && ($first_digit != '1') && (\in_array($get_code, Tools::CODES)) || ($number_digits == 10) && (\in_array($get_code, Tools::CODES))) {
+                    if ((($number_digits == 11)) && ($first_digit != '1') && (\in_array($get_code, Tools::CODES)) && ($number_digits == 10) && (\in_array($get_code, Tools::CODES))) {
                         // $to       = 'ewa@webmastersdesktop.com';
                         $to       = $email_log;
                         $subject  = $subject_title . ' Form Wrong Number';
@@ -164,14 +156,14 @@ class Validation
                             $message = "Wrong number is: $phone ";
                             mail($to, $subject, $message, $headers);
 
-                            $mail = new Mail();
-                            $mail->setTo($to);
-                            $mail->setFrom($email);
-                            $mail->setSenderEmail($email);
-                            $mail->setSender($name);
-                            $mail->setHtml($message);
-                            $mail->setSubject($subject_title);
-                            $mail->send();
+                            // $mail = new Mail();
+                            // $mail->setTo($to);
+                            // $mail->setFrom($email);
+                            // $mail->setSenderEmail($email);
+                            // $mail->setSender($name);
+                            // $mail->setHtml($message);
+                            // $mail->setSubject($subject_title);
+                            // $mail->send();
 
                             // $url =  '../contact.php?error=errPhone#newsf';
                             $url .= '?error=errValPhone_' . $form . '#newsf';
@@ -283,6 +275,15 @@ class Validation
                         // $mail->setHtml($message);
                         // $mail->setSubject($subject_title);
                         // $mail->send();
+
+                        echo '<script>Cookies.remove("name_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("phone_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("email_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("city_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("zip_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("street_name_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("street_number_' . $form . '")</script>';
+                        echo '<script>Cookies.remove("note_' . $form . '")</script>';
 
                         $url .= '?send=val_' . $form . '#newsf';
 

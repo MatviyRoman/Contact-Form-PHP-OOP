@@ -10,7 +10,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/contact_form/config/settings.php';
 
-$contact_form->buttonText('Submit Form');
+$contact_form->buttonText('Submit');
 $contact_form->render('contactForm');
 
 ?>
