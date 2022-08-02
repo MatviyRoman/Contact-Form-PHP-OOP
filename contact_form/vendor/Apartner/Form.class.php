@@ -48,7 +48,8 @@ class Form
 
         $token = Tools::generateFormToken($id); ?>
 <div class="contForm" id="newsf<?= $id?>">
-    <div class="contPar"><?= Errors::check($id); ?>
+    <div class="contPar">
+        <p class="callformEr erNormal">Send us a message</p>
     </div><!-- end contPar -->
     <form class="contactForm" id="<?= $id ?>"
           action="?<?= $id ?>" method="post">
@@ -212,6 +213,11 @@ class Form
                 </div>
             </div><!-- end stoneFormFull -->
 
+            <div class="contPar">
+                <?= Errors::check($id); ?>
+            </div>
+            <!-- end contPar -->
+
             <div class="contactFormFull">
                 <input data-callback="onSubmit" type="submit"
                        name="submit_<?= $id ?>"
@@ -311,7 +317,35 @@ class Form
               
               .formHalfWrapper.two-columns .contactFormHalf {
                 width: 49%;
-              }</style>';
+              }
+
+              @media (max-width: 1023px) {
+                .contactForm .contactFormHalf {
+                    width: 100% !important;
+              }
+
+              @media only screen and (max-width: 767px) {
+              .contactFormHalf {
+                  width: 100% !important;
+                  display: block !important;
+                  padding: 5px 0 !important;
+              }
+            }
+              
+              @media only screen and (max-width: 767px) {
+              .contactFormHalf input[type="text"], .contactFormFull input[type="submit"] {
+                  height: 50px !important;
+                  font-size: 18px !important;
+              }
+            }
+              
+              @media only screen and (max-width: 767px) {
+              .contactFormHalf input[type="text"] {
+                  font-size: 16px !important;
+              }
+            }
+
+              </style>';
         }
 
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {

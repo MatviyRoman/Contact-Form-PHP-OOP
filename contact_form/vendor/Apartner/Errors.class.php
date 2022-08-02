@@ -22,60 +22,88 @@ class Errors
             $formErr    = 'invalid';
         }
 
+        $text       ='';
         $errMessage = '';
 
         switch ($formErr) {
             case "errFields_$form":
-                $errMessage = '<p class="callformEr erRed">Fill all form fields</p>';
+                $text       = 'Fill all form fields';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
             case "errName_$form":
-                $errMessage = '<p class="callformEr erRed">Enter your name</p>';
+                $text       = 'Enter your name';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
             case "errPhone_$form":
-                $errMessage = '<p class="callformEr erRed">Enter your phone</p>';
+                $text       = 'Enter your phone';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
             case "errValPhone_$form":
-                $errMessage = '<p class="callformEr erRed">Not valid phone number</p>';
+                $text       = 'Not valid phone number';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
             case "errEmail_$form":
-                $errMessage = '<p class="callformEr erRed">Enter your email</p>';
+                $text       = 'Enter your email';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
             case "errValEmail_$form":
-                $errMessage = '<p class="callformEr erRed">Not valid email address!</p>';
+                $text       = 'Not valid email address!';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "errNote_$form":
-                $errMessage = '<p class="callformEr erRed">Enter your message</p>';
+                $text       = 'Enter your message';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "errStreetName_$form":
-                $errMessage = '<p class="callformEr erRed">Enter the street address</p>';
+                $text       = 'Enter the street address';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "errStreetNumber_$form":
-                $errMessage = '<p class="callformEr erRed">Enter the street number</p>';
+                $text       = 'Enter the street number';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "errZip_$form":
-                $errMessage = '<p class="callformEr erRed">Not valid zip code!</p>';
+                $text       = 'Not valid zip code!';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "errValC_$form":
-                $errMessage = '<p class="callformEr erRed">Not valid</p>';
+                $text       = 'Not valid';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "errValSec_$form":
-                $errMessage = '<p class="callformEr erRed">Security Alert: Unable to process your request.</p>';
+                $text       = 'Security Alert: Unable to process your request.';
+                $errMessage = '<p class="callformEr erRed">' . $text . '</p>';
                 break;
 
             case "val_$form":
-                $errMessage = '<p class="callformEr erGreen">Request sent</p>';
+                $text       = 'Request sent';
+                $errMessage = '<p class="callformEr erGreen">' . $text . '</p>';
                 break;
 
             default:
-                $errMessage = '<p class="callformEr erNormal">Send us a message</p>';
+                // $errMessage = '<p class="callformEr erNormal">Send us a message</p>';
+                $errMessage = '';
         }
 
         echo $errMessage;
+
+        if (isset($errMessage)) {
+            if (isset($_GET['error'])) {
+                $formErr = 'error';
+            } elseif (isset($_GET['send'])) {
+                $formErr = 'send';
+            }
+
+            echo '<script>window.addEventListener("load", function () {
+                alert("Form ' . $formErr . '\n' . $text . '");
+            });
+            </script>';
+        }
     }
 }
