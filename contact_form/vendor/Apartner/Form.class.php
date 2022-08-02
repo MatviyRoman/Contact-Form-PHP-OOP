@@ -43,7 +43,8 @@ class Form
         $antiCSRF     = new SecurityService();
         $csrfResponse = $antiCSRF->validate($id);
 
-        Validation::contactSubmit(self::$root, self::$folder, $id, $csrfResponse, self::$email_to, self::$email_log, self::$email_copy);
+        // Validation::contactSubmit(self::$root, self::$folder, $id, $csrfResponse, self::$email_to, self::$email_log, self::$email_copy);
+        Validation::contactSubmit($id, $csrfResponse, self::$email_to, self::$email_log, self::$email_copy);
 
         $token = Tools::generateFormToken($id); ?>
 <div class="contForm" id="newsf<?= $id?>">
@@ -59,7 +60,7 @@ class Form
 
         <div class="contactFormWrap">
             <div class="contactFormFirst antispam">
-                <input type="text" name="firstname" value="fname"
+                <input type="text" name="fname" value="fname"
                        onclick="if (this.defaultValue==this.value) this.value=''"
                        onblur="if (this.value=='') this.value=this.defaultValue" required="">
 
@@ -70,7 +71,12 @@ class Form
             <div class="formHalfWrapper">
                 <!-- name -->
                 <?php
+
+                $name = '';
+        if (isset($_COOKIE["name_$id"])) {
             $name = Tools::stripCleanToHtml($_COOKIE["name_$id"]);
+        }
+
         $name     = $name ? $name : 'name'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="name"
@@ -82,7 +88,12 @@ class Form
 
                 <!-- phone -->
                 <?php
+
+        $phone = '';
+        if (isset($_COOKIE["phone_$id"])) {
             $phone = Tools::stripCleanToHtml($_COOKIE["phone_$id"]);
+        }
+
         $phone     = $phone ? $phone : 'phone'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="phone"
@@ -94,7 +105,12 @@ class Form
 
                 <!-- email -->
                 <?php
+
+            $email = '';
+        if (isset($_COOKIE["email_$id"])) {
             $email = Tools::stripCleanToHtml($_COOKIE["email_$id"]);
+        }
+
         $email     = $email ? $email : 'email'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="email"
@@ -108,7 +124,12 @@ class Form
             <div class="formHalfWrapper two-columns">
                 <!-- street number -->
                 <?php
+
+        $street_number = '';
+        if (isset($_COOKIE["street_number_$id"])) {
             $street_number = Tools::stripCleanToHtml($_COOKIE["street_number_$id"]);
+        }
+
         $street_number     = $street_number ? $street_number : 'street number'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="street number"
@@ -120,7 +141,12 @@ class Form
 
                 <!-- street name -->
                 <?php
+
+        $street_name = '';
+        if (isset($_COOKIE["street_name_$id"])) {
             $street_name = Tools::stripCleanToHtml($_COOKIE["street_name_$id"]);
+        }
+
         $street_name     = $street_name ? $street_name : 'street name'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="street name"
@@ -136,7 +162,12 @@ class Form
             <div class="formHalfWrapper two-columns">
                 <!-- city -->
                 <?php
+
+        $city = '';
+        if (isset($_COOKIE["city_$id"])) {
             $city = Tools::stripCleanToHtml($_COOKIE["city_$id"]);
+        }
+
         $city     = $city ? $city : 'city'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="city"
@@ -148,7 +179,12 @@ class Form
 
                 <!-- ZIP -->
                 <?php
+
+        $zip = '';
+        if (isset($_COOKIE["zip_$id"])) {
             $zip = Tools::stripCleanToHtml($_COOKIE["zip_$id"]);
+        }
+
         $zip     = $zip ? $zip : 'zip'; ?>
                 <div class="contactFormHalf">
                     <input type="text" placeholder="zip"
@@ -162,7 +198,12 @@ class Form
 
             <!-- note -->
             <?php
+
+        $note = '';
+        if (isset($_COOKIE["note_$id"])) {
             $note = Tools::stripCleanToHtml($_COOKIE["note_$id"]);
+        }
+
         $note     = $note ? $note : ''; ?>
             <div class="contactFormFull">
                 <div class="contactFormHalf">
@@ -185,7 +226,14 @@ class Form
             echo '<link rel="stylesheet" href="/' . self::$folder . '/assets/style.css">';
             // echo '<script type="text/javascript" src="/' . self::$folder . '/public/contact-form.js"></script>';
 
-            echo '<style>.contactFormHalf {
+            echo '<style>
+
+            .antispam {
+                height: 0;
+                overflow: hidden;
+            }
+
+            .contactFormHalf {
                 width: 32%;
                 overflow: hidden;
                 padding: 20px 0;

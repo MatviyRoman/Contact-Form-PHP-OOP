@@ -123,12 +123,31 @@ class Validation
                         // $to       = 'ewa@webmastersdesktop.com';
                         $to       = $email_log;
                         $subject  = $subject_title . ' Form Wrong Number';
-                        $headers  = 'MIME-Version: 1.0' . "\r\n";
-                        $headers .= "Bcc: $email_copy\r\n";
-                        $message = "Wrong number is: $phone ";
-                        mail($to, $subject, $message, $headers);
+                        $message  = "Wrong number is: $phone ";
 
-                        $url .= '?';
+                        //! email old start
+                        $headers  = 'MIME-Version: 1.0' . "\r\n";
+                        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+                        $headers .= "Cc: $email_copy\r\n";
+                        $headers .= 'From:   <' . $email . ">\r\n";
+                        mail($to, $subject, $message, $headers);
+                        //! email old end
+
+                        //! email start
+                        // $mail = new Mail();
+                        // $mail->setTo($to);
+                        // $mail->setFrom($email);
+                        // $mail->setEmailCopy($email_copy);
+                        // $mail->setEmailLog($email_log);
+                        // $mail->setSenderEmail($email);
+                        // $mail->setSender($name);
+                        // $mail->setHtml($message);
+                        // $mail->setSubject($subject);
+                        // $mail->send();
+                        //! email end
+
+                        // $url =  '../contact.php?error=errPhone#newsf';
+                        $url .= '?error=errValPhone_' . $form . '#newsf';
 
                         self::redirect($url, $form);
                         exit();
@@ -151,19 +170,28 @@ class Validation
                             // $to       = 'ewa@webmastersdesktop.com';
                             $to       = $email_log;
                             $subject  = $subject_title . ' Form Wrong Number';
-                            $headers  = 'MIME-Version: 1.0' . "\r\n";
-                            $headers .= "Bcc: $email_copy\r\n";
-                            $message = "Wrong number is: $phone ";
-                            mail($to, $subject, $message, $headers);
+                            $message  = "Wrong number is: $phone ";
 
+                            //! email old start
+                            $headers  = 'MIME-Version: 1.0' . "\r\n";
+                            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+                            $headers .= "Cc: $email_copy\r\n";
+                            $headers .= 'From:   <' . $email . ">\r\n";
+                            mail($to, $subject, $message, $headers);
+                            //! email old end
+
+                            //! email start
                             // $mail = new Mail();
                             // $mail->setTo($to);
                             // $mail->setFrom($email);
+                            // $mail->setEmailCopy($email_copy);
+                            // $mail->setEmailLog($email_log);
                             // $mail->setSenderEmail($email);
                             // $mail->setSender($name);
                             // $mail->setHtml($message);
-                            // $mail->setSubject($subject_title);
+                            // $mail->setSubject($subject);
                             // $mail->send();
+                            //! email end
 
                             // $url =  '../contact.php?error=errPhone#newsf';
                             $url .= '?error=errValPhone_' . $form . '#newsf';
@@ -259,22 +287,30 @@ class Validation
                         $to = $email_to;
                         //$to = 'ewa@webmastersdesktop.com';
                         $subject  = $subject_title . ' Contact Form Request';
+
+                        //! mail old start
                         $headers  = 'MIME-Version: 1.0' . "\r\n";
                         $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-                        $headers .= "Bcc: $email_copy,$email_log\r\n";
-
+                        $headers .= "Cc: $email_copy,$email_log\r\n";
                         $headers .= 'From:   <' . $email . ">\r\n";
-
                         mail($to, $subject, $message, $headers);
+                        //! mail old end
 
+                        //! mail start
                         // $mail = new Mail();
                         // $mail->setTo($to);
                         // $mail->setFrom($email);
+                        // $mail->setEmailCopy($email_copy);
+                        // $mail->setEmailLog($email_log);
                         // $mail->setSenderEmail($email);
                         // $mail->setSender($name);
                         // $mail->setHtml($message);
-                        // $mail->setSubject($subject_title);
+                        // $mail->setSubject($subject);
                         // $mail->send();
+                        // echo $email_log;
+                        // echo $email_copy;
+                        // dd($mail);
+                        //! mail end
 
                         echo '<script>Cookies.remove("name_' . $form . '")</script>';
                         echo '<script>Cookies.remove("phone_' . $form . '")</script>';

@@ -7,8 +7,8 @@ return [
 
     'email' => [
         'to'    => 'to@matviy.pp.ua',
-        'log'   => 'log@matviy.pp.ua',
-        'copy'  => 'Remi@matviy.pp.ua',
+        'log'   => 'matviy.pp.ua@gmail.com',
+        'copy'  => 'remi@matviy.pp.ua',
         // 'to'   => 'skampapainting@gmail.com',
         // 'log'  => 'ewa@webmastersdesktop.com',
         // 'copy'  => 'remik@webmastersdesktop.com',
